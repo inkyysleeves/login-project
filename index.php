@@ -11,9 +11,7 @@ if (isset($_SESSION["userID"])) {
     }
 }
 ?>
-
 <?php require("./inc/header.html"); ?>
-
 <div class="container">
     <div class="card bg-light mb-3">
         <div class="card-header">

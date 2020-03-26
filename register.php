@@ -1,9 +1,6 @@
 <?php
 if (isset($_POST["register"])) {
     require("./config/db.php");
-    // $userName = $_POST["userName"];
-    // $userEmail = $_POST["userEmail"]; how not to do it;
-    // $password = $_POST["password"];
     $userName = filter_var($_POST["userName"], FILTER_SANITIZE_STRING);
     $userEmail = filter_var($_POST["userEmail"], FILTER_SANITIZE_EMAIL);
     $password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
@@ -13,8 +10,6 @@ if (isset($_POST["register"])) {
         $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ? ');
         $stmt->execute([$userEmail]);
         $totalUsers = $stmt->rowCount();
-
-        // echo $totalUsers . '<br >';
 
         if ($totalUsers > 0) {
             $emailTaken = "Email Already Registered <br >";

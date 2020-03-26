@@ -5,7 +5,6 @@ if (isset($_POST["login"])) {
     $userEmail = filter_var($_POST["userEmail"], FILTER_SANITIZE_EMAIL);
     $password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
 
-
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? ");
     $stmt->execute([$userEmail]);
     $user = $stmt->fetch();
@@ -19,19 +18,6 @@ if (isset($_POST["login"])) {
             $wrongLogin = "The login email or passsword is incorrect";
         }
     }
-
-
-    // if (filter_var($userEmail, FILTER_VALIDATE_EMAIL)) {
-    //     $stmt = $pdo->prepare('SELECT * from users WHERE email = ? ');
-    //     $stmt->execute([$userEmail]);
-    //     $totalUsers = $stmt->rowCount();
-    //     if ($totalUsers > 0) {
-    //         $emailTaken = "Email Already Registered <br >";
-    //     } else {
-    //         $stmt = $pdo->prepare('INSERT into users(name , email, password) VALUES( ? , ? , ? )');
-    //         $stmt->execute([$userName, $userEmail, $password]);
-    //     }
-    // }
 }
 ?>
 <?php require("./inc/header.html"); ?>
