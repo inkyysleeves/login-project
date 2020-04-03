@@ -16,6 +16,7 @@ if (isset($_POST["register"])) {
         } else {
             $stmt = $pdo->prepare('INSERT into users(name , email, password) VALUES( ? , ? , ? )');
             $stmt->execute([$userName, $userEmail, $passwordHashed]);
+            header("location: http://localhost:8888/login-project/index.php");
         }
     }
 }
@@ -37,7 +38,7 @@ if (isset($_POST["register"])) {
                     <br />
                     <?php if(isset($emailTaken))  { ?>
                         <p style="color:red; font-weight:bold;"><?php echo $emailTaken;?></p>
-                    <?php } $emailTaken?>
+                    <?php } ?>
                 </div>
                 <div class="form-group">
                     <label for="password">User Password</label>
